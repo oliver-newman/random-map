@@ -21,7 +21,6 @@
   "chrome_url_overrides": {
     "newtab": "random-map.html"
   },
-
   
   "browser_action": {
     "default_title": "RandomMap",
