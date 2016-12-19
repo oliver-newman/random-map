@@ -5,6 +5,7 @@
   "description": "Replace the new tab with a randomly chosen DigitalGlobe satellite image",
   "version": "0.0",
   "homepage_url": "https://github.com/oliver-newman/random-map",
+  "options_page": "options.html",
 
   "permissions": [
     "activeTab",
@@ -21,6 +22,7 @@
     "newtab": "random-map.html"
   },
 
+  
   "browser_action": {
     "default_title": "RandomMap",
     "default_icon": "assets/images/icon128.png"
