@@ -1,7 +1,7 @@
 # RandomMap
 
 A Google Chrome extension to replace the user's new tab page with a random
-satellite image from Google Maps.
+satellite image from DigitalGlobe.
 
 ## Installation
 

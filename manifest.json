@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "RandomMap",
-  "description": "Replace the new tab with a randomly chosen Google Maps satellite image",
+  "description": "Replace the new tab with a randomly chosen DigitalGlobe satellite image",
   "version": "0.0",
 
   "browser_action": {
