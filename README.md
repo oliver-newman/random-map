@@ -5,4 +5,4 @@ satellite image from DigitalGlobe.
 
 ## Installation
 
-Hopefully installable via the Chrome Web Store in the near future.
+Get it on the Chrome Web Store at https://chrome.google.com/webstore/detail/randommap/mcfelmkmgbibpgkklglafpenihjockij.
