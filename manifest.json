@@ -3,7 +3,7 @@
   "name": "RandomMap",
   "short_name": "RandomMap",
   "description": "Replace new tab with a randomly chosen DigitalGlobe satellite image",
-  "version": "0.1",
+  "version": "0.1.1",
   "homepage_url": "https://github.com/oliver-newman/random-map",
   "options_page": "options.html",
 
