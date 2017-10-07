@@ -22,8 +22,8 @@ function setImage(response) {
 }
 
 function setGoogleMapsURL(response) {
-    let lat = response.headers.get('Randommap-Latitude') || 40.7491816;
-    let lon = response.headers.get('Randommap-Longitude') || -73.9511917;
+    let lat = response.headers.get('Randommap-Latitude') || -58.0371406;
+    let lon = response.headers.get('Randommap-Longitude') || -80.6861371;
     let zoom = response.headers.get('Randommap-Zoom') || 7;
 
     let googleMapsURL = `https://www.google.com/maps/@${lat},${lon},${zoom}z`;
