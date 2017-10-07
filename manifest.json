@@ -3,12 +3,12 @@
   "name": "RandomMap",
   "short_name": "RandomMap",
   "description": "Replace new tab with a randomly chosen DigitalGlobe satellite image",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage_url": "https://github.com/oliver-newman/random-map",
   "options_page": "options.html",
 
   "permissions": [
-    "https://api.mapbox.com/*"
+    "<all_urls>"
   ],
 
   "icons": {
@@ -18,7 +18,7 @@
   },
 
   "chrome_url_overrides": {
-    "newtab": "random-map.html"
+    "newtab": "randommap.html"
   },
   
   "browser_action": {

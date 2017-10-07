@@ -1,45 +1,61 @@
-$(function () {
-  const accessToken = ''; // MapBox API token goes here
+function main() {
+    let mapURL = 'https://randommap.herokuapp.com/map';
+    fetch(mapURL).then(checkStatus).then(function(response) {
+        setImage(response);
+        setGoogleMapsURL(response);
+    });
 
-  // Can't request images larger than 1280x1280
-  const w = Math.min(window.innerWidth, 1280),
-        h = Math.min(window.innerHeight, 1280),
-        // Random latitude and longitude
-        lat = (Math.random() - 0.5) * 160,
-        lon = (Math.random() - 0.5) * 360,
-        zoom = 7;
+    setMenu();
+}
 
-  const googleMapsURL = `https://www.google.com/maps/@${lat},${lon},${zoom}z`,
-        imageURL = `https://api.mapbox.com/v4/digitalglobe.nal0g75k/${lon},` +
-                  `${lat},${zoom}/${w}x${h}.png?access_token=${accessToken}`;
+function checkStatus(response) {  
+    return response.ok ? Promise.resolve(response) :
+                         Promise.reject(new Error(response.statusText));
+}
 
-  $('.map').css('background-image', `url(${imageURL})`);
-  $('.google-maps-link').attr('href', googleMapsURL);
+function setImage(response) {
+    response.blob().then(function(blob) {
+        window.URL = window.URL || window.webkitURL;
+        let blobURL = window.URL.createObjectURL(blob);
+        $('#map').attr('src', blobURL);
+    });
+}
 
-  let mouseOverMenu = false;
-  let mouseOverIcon = false;
+function setGoogleMapsURL(response) {
+    let lat = response.headers.get('Randommap-Latitude') || 40.7491816;
+    let lon = response.headers.get('Randommap-Longitude') || -73.9511917;
+    let zoom = response.headers.get('Randommap-Zoom') || 7;
 
-  // Display menu when user hovers over the info icon
-  $('.info-button').hover(function () {
-    mouseOverIcon = true;
-    $('.info-box').slideDown();
-  }, function () {
-    mouseOverIcon = false;
-    setTimeout(function () { // TODO: not the best way to do this
-      if (!mouseOverMenu) {
-        $('.info-box').slideUp();
-      }
-    }, 200);
-  });
+    let googleMapsURL = `https://www.google.com/maps/@${lat},${lon},${zoom}z`;
+    $('.google-maps-link').attr('href', googleMapsURL);
+}
 
-  // Keep menu displayed while the user hovers over it
-  $('.info-box').hover(function () {
-    mouseOverMenu = true;
-  }, function () {
-    mouseOverMenu = false;
-    if (!mouseOverIcon) {
-      $('.info-box').slideUp();
-    }
-  });
-});
+function setMenu() {
+    let mouseOverMenu = false;
+    let mouseOverIcon = false;
 
+    // Display menu when user hovers over the info icon
+    $('.info-button').hover(function() {
+        mouseOverIcon = true;
+        $('.info-box').slideDown();
+    }, function() {
+        mouseOverIcon = false;
+        setTimeout(function() { // TODO: not the best way to do this
+            if (!mouseOverMenu) {
+                $('.info-box').slideUp();
+            }
+        }, 200);
+    });
+
+    // Keep menu displayed while the user hovers over it
+    $('.info-box').hover(function() {
+        mouseOverMenu = true;
+    }, function() {
+        mouseOverMenu = false;
+        if (!mouseOverIcon) {
+            $('.info-box').slideUp();
+        }
+    });
+}
+
+$(main());
